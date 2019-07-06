@@ -1,9 +1,4 @@
-﻿spring:
-  profiles:
-    active:
-      - test
----
-server: 
+﻿server: 
   port: 6731
 spring:
   profiles: dev
