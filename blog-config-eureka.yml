@@ -1,12 +1,7 @@
-﻿spring:
-  profiles:
-    active:
-      - test
----
-server: 
+﻿server: 
   port: 6731
 spring:
-  profiles: dev
+  profiles: test
 eureka:
   instance:
     hostname: 39.107.94.168   # eureka服务端的实例名称
@@ -20,7 +15,7 @@ eureka:
 server: 
   port: 6731
 spring:
-  profiles: test
+  profiles: dev
 eureka:
   instance:
     hostname: localhost   # eureka服务端的实例名称
