@@ -2,10 +2,10 @@
   port: 8001
 mybatis:
   #config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.shqblog.entity   # entityæ‰€åœ¨è·¯å¾„
-  mapper-locations: classpath:mybatis/mapper/**/*.xml    # mapperæ˜ å°„æ–‡ä»¶
+  type-aliases-package: com.shqblog.entity   # entityËùÔÚÂ·¾¶
+  mapper-locations: classpath:mybatis/mapper/**/*.xml    # mapperÓ³ÉäÎÄ¼ş
   configuration:
-#    mapUnderscoreToCamelCase: true       #  å¼€å¯é©¼å³°å‘½åæ³•
+#    mapUnderscoreToCamelCase: true       #  ¿ªÆôÍÕ·åÃüÃû·¨
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     
 spring:
@@ -19,19 +19,22 @@ spring:
     username: root
     password: root
     dbcp2:
-      min-idle: 5                     # æ•°æ®åº“è¿æ¥æ± çš„æœ€å°ç»´æŒè¿æ¥æ•°
-      initial-size: 5                 # åˆå§‹åŒ–è¿æ¥æ•°
-      max-total: 5                    # æœ€å¤§è¿æ¥æ•°
-      max-wait-millis: 200            # ç­‰å¾…è¿æ¥è·å–çš„æœ€å¤§è¶…æ—¶æ—¶é—´
+      min-idle: 5                     # Êı¾İ¿âÁ¬½Ó³ØµÄ×îĞ¡Î¬³ÖÁ¬½ÓÊı
+      initial-size: 5                 # ³õÊ¼»¯Á¬½ÓÊı
+      max-total: 5                    # ×î´óÁ¬½ÓÊı
+      max-wait-millis: 200            # µÈ´ıÁ¬½Ó»ñÈ¡µÄ×î´ó³¬Ê±Ê±¼ä
   jackson: 
     date-format: yyyy-MM-dd HH:mm:ss
     joda-date-time-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  devtools:
+    restart:
+      enabled: false
 eureka:
-  client: #å®¢æˆ·ç«¯æ³¨å†Œé‡‘eurekaæœåŠ¡åˆ—è¡¨ä¸­
+  client: #¿Í»§¶Ë×¢²á½ğeureka·şÎñÁĞ±íÖĞ
     service-url:
       defaultZone: http://localhost:6731/eureka/
-      #åœ¨å¾®æœåŠ¡åˆ—è¡¨ä¸­æ³¨å†Œçš„åå­—æ˜¯spring.application.nameçš„åå­—
+      #ÔÚÎ¢·şÎñÁĞ±íÖĞ×¢²áµÄÃû×ÖÊÇspring.application.nameµÄÃû×Ö
   instance:
     instance-id: blog-pay:8001
     prefer-ip-address: true
