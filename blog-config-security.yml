@@ -1,0 +1,250 @@
+﻿server:
+  port: 8090
+  servlet:
+    session:
+      tracking-modes: cookie
+spring: 
+  application: 
+    name: boot-server
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.107.94.168:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: qq183521065
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      stat-view-servlet:
+        allow: 127.0.0.1
+#        allow: 140.143.39.21
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mvc:
+    servlet:
+      load-on-startup: 1
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+  mail:
+    default-encoding: UTF-8
+    host:  smtp.qq.com #smtp.163.com
+    #这里不是邮箱的登录密码，而是开启PO3/SMTP服务时邮箱的授权码
+    username: 183521065@qq.com
+    password: etntrrdmpngdcaag
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail.smtp.auth: true
+    port: 587
+    mail:
+      smtp:
+      socketFactory:
+      class: javax.net.ssl.SSLSocketFactory
+      debug: true
+  thymeleaf:
+    prefix: classpath:/static/pages/blog/
+    cache: true
+
+  resources:
+      add-mappings: true  #配置
+      chain:
+        cache: true
+        enabled: true
+        gzipped: true  #是否执行压缩
+        html-application-cache: true  #是否启动html引用的缓存
+      static-locations: classpath:/static/    #静态资源页面的位置
+      cache:
+        period: 3600  #页面浏览器的配置缓存多少秒
+    
+    
+mybatis:
+  type-aliases-package: com.boot.security.server.model
+  mapper-locations: classpath:/mybatis-mappers/*
+  configuration:
+    mapUnderscoreToCamelCase: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+files: 
+#  path: ${file-path:/usr/local/file}
+  path: ${file-path:d:/files}
+  
+#logging:
+#  config: classpath:logback-admin.xml
+#log:
+#  level:
+#    root: info
+#    my: debug
+#  file: logs/admin-server.log
+#  maxsize: 30MB
+token:
+  expire:
+    seconds: 7200
+  jwtSecret: (XIAO:)_$^11244^%$_(WEI:)_@@++--(LAO:)_++++_.sds_(SHI:)
+
+        
+  servlet:
+    context-path: /myblog
+feign:  
+  hystrix: 
+    enabled: false
+eureka:
+  client: #客户端注册金eureka服务列表中
+    register-with-eureka: false   #自己不能注册
+    service-url:
+      defaultZone: http://localhost:6731/eureka/
+      #在微服务列表中注册的名字是spring.application.name的名
+logging:
+  level:
+    project: 
+      user: 
+        UserClient: DEBUG
+---
+server:
+  port: 80
+  servlet:
+    session:
+      tracking-modes: cookie
+spring: 
+  application: 
+    name: boot-server
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: qq183521065
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      stat-view-servlet:
+        allow: 127.0.0.1
+#        allow: 140.143.39.21
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mvc:
+    servlet:
+      load-on-startup: 1
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+  mail:
+    default-encoding: UTF-8
+    host:  smtp.qq.com #smtp.163.com
+    #这里不是邮箱的登录密码，而是开启PO3/SMTP服务时邮箱的授权码
+    username: 183521065@qq.com
+    password: etntrrdmpngdcaag
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail.smtp.auth: true
+    port: 587
+    mail:
+      smtp:
+      socketFactory:
+      class: javax.net.ssl.SSLSocketFactory
+      debug: true
+  thymeleaf:
+    prefix: classpath:/static/pages/blog/
+    cache: true
+
+  resources:
+      add-mappings: true  #配置
+      chain:
+        cache: true
+        enabled: true
+        gzipped: true  #是否执行压缩
+        html-application-cache: true  #是否启动html引用的缓存
+      static-locations: classpath:/static/    #静态资源页面的位置
+      cache:
+        period: 3600  #页面浏览器的配置缓存多少秒
+mybatis:
+  type-aliases-package: com.boot.security.server.model
+  mapper-locations: classpath:/mybatis-mappers/*
+  configuration:
+    mapUnderscoreToCamelCase: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+files: 
+  path: ${file-path:/usr/local/file}
+  
+#logging:
+#  config: classpath:logback-admin.xml
+#log:
+#  level:
+#    root: info
+#    my: debug
+#  file: logs/admin-server.log
+#  maxsize: 30MB
+token:
+  expire:
+    seconds: 7200
+  jwtSecret: (XIAO:)_$^11244^%$_(WEI:)_@@++--(LAO:)_++++_.sds_(SHI:)
+
+        
+  servlet:
+    context-path: /myblog
+feign:  
+  hystrix: 
+    enabled: false
+eureka:
+  client: #客户端注册金eureka服务列表中
+    register-with-eureka: false   #自己不能注册
+    service-url:
+      defaultZone: http://localhost:6731/eureka/
+      #在微服务列表中注册的名字是spring.application.name的名
+logging:
+  level:
+    project: 
+      user: 
+        UserClient: DEBUG
+
+
