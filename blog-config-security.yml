@@ -1,15 +1,15 @@
-﻿server:
+﻿docker: 
+  url: 172.17.251.66
+server: 
   port: 8090
   servlet:
     session:
       tracking-modes: cookie
 spring: 
-  application: 
-    name: boot-server
   profiles: prod
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://39.107.94.168:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://${docker.url}:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username: root
     password: qq183521065
     druid:
@@ -116,7 +116,7 @@ eureka:
   client: #客户端注册金eureka服务列表中
     register-with-eureka: false   #自己不能注册
     service-url:
-      defaultZone: http://localhost:6731/eureka/
+      defaultZone: http://${docker.url}:6731/eureka/
       #在微服务列表中注册的名字是spring.application.name的名
 logging:
   level:
@@ -124,18 +124,18 @@ logging:
       user: 
         UserClient: DEBUG
 ---
+docker: 
+  url: 172.17.251.66
 server:
   port: 80
   servlet:
     session:
       tracking-modes: cookie
 spring: 
-  application: 
-    name: boot-server
   profiles: dev
-  datasource:
+  datasource: 
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://${docker.url}:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username: root
     password: qq183521065
     druid:
@@ -239,7 +239,7 @@ eureka:
   client: #客户端注册金eureka服务列表中
     register-with-eureka: false   #自己不能注册
     service-url:
-      defaultZone: http://localhost:6731/eureka/
+      defaultZone: http://${docker.url}:6731/eureka/
       #在微服务列表中注册的名字是spring.application.name的名
 logging:
   level:
