@@ -30,7 +30,7 @@ spring:
 eureka:
   client: #客户端注册金eureka服务列表中
     service-url:
-      defaultZone: http://localhost:6731/eureka/
+      defaultZone: http://127.0.0.1:6731/eureka/
       #在微服务列表中注册的名字是spring.application.name的名字
   instance:
     instance-id: blog-pay:8001
