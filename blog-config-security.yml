@@ -6,7 +6,7 @@ server:
     session:
       tracking-modes: cookie
 spring: 
-  profiles: prod
+  profiles: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://${docker.url}:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
@@ -132,7 +132,7 @@ server:
     session:
       tracking-modes: cookie
 spring: 
-  profiles: dev
+  profiles: prod
   datasource: 
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://${docker.url}:3306/boot_security?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
