@@ -35,6 +35,9 @@ eureka:
   instance:
     instance-id: blog-pay:8001
     prefer-ip-address: true
+  enabled: true
+  register-with-eureka: true
+  fetch-registry: true
 info: 
   app.name: shablog
   company.name: www.shqblog.com
