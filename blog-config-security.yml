@@ -168,7 +168,7 @@ spring:
     servlet:
       load-on-startup: 1
   redis:
-    host: localhost
+    host: ${docker.url}
     port: 6379
     timeout: 10s
     lettuce:
