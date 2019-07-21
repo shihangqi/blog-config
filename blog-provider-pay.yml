@@ -4,10 +4,10 @@ server:
   port: 8001
 mybatis:
   #config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.shqblog.entity   # entity所在路径
-  mapper-locations: classpath:mybatis/mapper/**/*.xml    # mapper映射文件
+  type-aliases-package: com.shqblog.entity  
+  mapper-locations: classpath:mybatis/mapper/**/*.xml    
   configuration:
-#    mapUnderscoreToCamelCase: true        #  开启驼峰命名法
+#    mapUnderscoreToCamelCase: true       
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     
 spring:
@@ -21,19 +21,18 @@ spring:
     username: root
     password: root
     dbcp2:
-      min-idle: 5                     # 数据库连接池的最小维持连接数
-      initial-size: 5                  # 初始化连接数
-      max-total: 5                    # 最大连接数
-      max-wait-millis: 200            # 等待连接获取的最大超时时间
+      min-idle: 5                    
+      initial-size: 5                
+      max-total: 5                    
+      max-wait-millis: 200            
   jackson: 
     date-format: yyyy-MM-dd HH:mm:ss
     joda-date-time-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 eureka:
-  client:  #客户端注册金eureka服务列表中
+  client:  
     service-url:
       defaultZone: http://${docker.url}:6731/eureka/
-       #在微服务列表中注册的名字是spring.application.name的名字
   instance:
     instance-id: blog-pay:8001
     prefer-ip-address: true
@@ -58,10 +57,10 @@ server:
   port: 8001
 mybatis:
   #config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.shqblog.entity   # entity????·??
-  mapper-locations: classpath:mybatis/mapper/**/*.xml    # mapper??????
+  type-aliases-package: com.shqblog.entity   
+  mapper-locations: classpath:mybatis/mapper/**/*.xml   
   configuration:
-#    mapUnderscoreToCamelCase: true       #  ?????????????
+#    mapUnderscoreToCamelCase: true     
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     
 spring:
@@ -75,19 +74,18 @@ spring:
     username: root
     password: qq183521065
     dbcp2:
-      min-idle: 5                     # ?????????????С?????????
-      initial-size: 5                 # ???????????
-      max-total: 5                    # ?????????
-      max-wait-millis: 200            # ??????????????????
+      min-idle: 5                     
+      initial-size: 5                
+      max-total: 5                    
+      max-wait-millis: 200            
   jackson: 
     date-format: yyyy-MM-dd HH:mm:ss
     joda-date-time-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 eureka:
-  client: #?????????eureka?????б???
+  client: 
     service-url:
       defaultZone: http://${docker.url}:6731/eureka/
-      #????????б?????????????spring.application.name??????
   instance:
     instance-id: blog-pay:8001
     prefer-ip-address: true
